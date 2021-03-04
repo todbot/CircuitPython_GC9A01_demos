@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2019 Scott Shawcroft for Adafruit Industries
+# SPDX-FileCopyrightText: 2021 Tod Kurt
 #
 # SPDX-License-Identifier: MIT
 
@@ -25,8 +25,8 @@ Implementation Notes
 
 import displayio
 
-#__version__ = "1.2.5"
-#__repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_ILI9341.git"
+#__version__ = "1.0.0"
+#__repo__ = "https://github.com/todbot/todbot_CircuitPython_GC9A01.git"
 
 _INIT_SEQUENCE = (
     #xb"\x01\x80\x80"  # Software reset then delay x80 (128ms)
@@ -81,14 +81,10 @@ _INIT_SEQUENCE = (
     b"\x29\x80\x10"
 )
 
-#define COL_ADDR_SET        0x2A
-#define ROW_ADDR_SET        0x2B
-#define MEM_WR              0x2C
 #define COLOR_MODE          0x3A
 #define COLOR_MODE__12_BIT  0x03
 #define COLOR_MODE__16_BIT  0x05
 #define COLOR_MODE__18_BIT  0x06
-#define MEM_WR_CONT         0x3C
 
 
 # pylint: disable=too-few-public-methods
@@ -97,3 +93,4 @@ class GC9A01(displayio.Display):
 
     def __init__(self, bus, **kwargs):
         super().__init__(bus, _INIT_SEQUENCE, **kwargs)
+
