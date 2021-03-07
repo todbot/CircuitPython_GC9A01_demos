@@ -1,3 +1,5 @@
+#
+# works on QTPy
 
 import time
 import board
@@ -10,6 +12,7 @@ import todbot_gc9a01
 # Release any resources currently in use for the displays
 displayio.release_displays()
 
+# QT Py pinout
 spi = board.SPI()
 tft_cs = board.A3
 tft_dc = board.RX
@@ -24,15 +27,15 @@ display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=
 display = todbot_gc9a01.GC9A01(display_bus, width=240, height=240)
 
 # Make the display context
-splash = displayio.Group(max_size=10)
-display.show(splash)
+main = displayio.Group(max_size=10)
+display.show(main)
 
-# Draw a label
+# Draw a text label
 text_group = displayio.Group(max_size=5, scale=2, x=50, y=100)
 text = "Hello World!"
 text_area = label.Label(terminalio.FONT, text=text, color=0xFFFF00)
 text_group.append(text_area)  # Subgroup for text scaling
-splash.append(text_group)
+main.append(text_group)
 
 print("what")
 
