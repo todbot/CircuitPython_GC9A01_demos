@@ -48,7 +48,7 @@ main = displayio.Group()
 display.show(main)
 
 # 240x240 dial background
-bg_bitmap = displayio.OnDiskBitmap(open("/dial-percenti.bmp", "rb"))
+bg_bitmap = displayio.OnDiskBitmap(open("/imgs/dial-percenti.bmp", "rb"))
 bg_tile_grid = displayio.TileGrid(bg_bitmap, pixel_shader=displayio.ColorConverter())
 main.append(bg_tile_grid)
 
@@ -59,7 +59,7 @@ text_group.append(text_area)
 main.append(text_group)  # Subgroup for text scaling
 
 # 30x140 pointer
-bitmap_pointer, palette_pointer = adafruit_imageload.load("/pointer-red-basic-30x140.bmp", bitmap=displayio.Bitmap,palette=displayio.Palette)
+bitmap_pointer, palette_pointer = adafruit_imageload.load("/imgs/pointer-red-basic-30x140.bmp", bitmap=displayio.Bitmap,palette=displayio.Palette)
 palette_pointer.make_transparent(0
 )
 
