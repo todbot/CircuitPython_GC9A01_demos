@@ -15,6 +15,11 @@ import adafruit_imageload
 from adafruit_display_text import label
 import todbot_gc9a01
 
+# change these as you like, keep the pointer center at 15,105
+dial_background_filename = '/imgs/dial-background.bmp'
+pointer_filename = '/imgs/pointer-red-basic-30x140-c15x105.bmp'
+legend_text = "PERCENT\nAWESOME"
+
 displayio.release_displays()
 
 # # one pinout, on "southeast" side of Pico board 
@@ -48,20 +53,19 @@ main = displayio.Group()
 display.show(main)
 
 # 240x240 dial background
-bg_bitmap = displayio.OnDiskBitmap(open("/imgs/dial-percenti.bmp", "rb"))
+bg_bitmap = displayio.OnDiskBitmap(open(dial_background_filename, "rb"))
 bg_tile_grid = displayio.TileGrid(bg_bitmap, pixel_shader=displayio.ColorConverter())
 main.append(bg_tile_grid)
 
 # Text legend
-text_area = label.Label(terminalio.FONT, text="PERCENT\nAWESOME", line_spacing=0.9, color=0x000000, background_color=0xf0f0f0, anchor_point=(0.5,0.5), anchored_position=(0,0), background_tight=False)
+text_area = label.Label(terminalio.FONT, text=legend_text, line_spacing=0.9, color=0x000000, anchor_point=(0.5,0.5), anchored_position=(0,0))
 text_group = displayio.Group(scale=1, x=120, y=155)
 text_group.append(text_area)
 main.append(text_group)  # Subgroup for text scaling
 
 # 30x140 pointer
-bitmap_pointer, palette_pointer = adafruit_imageload.load("/imgs/pointer-red-basic-30x140.bmp", bitmap=displayio.Bitmap,palette=displayio.Palette)
-palette_pointer.make_transparent(0
-)
+bitmap_pointer, palette_pointer = adafruit_imageload.load(pointer_filename, bitmap=displayio.Bitmap,palette=displayio.Palette)
+palette_pointer.make_transparent(0)
 
 # Blank bitmap the same size as the pointer bitmap
 bitmap_pointer_blank = displayio.Bitmap(bitmap_pointer.width, bitmap_pointer.height, 1)# len(palette_pointer))

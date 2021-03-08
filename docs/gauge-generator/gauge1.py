@@ -84,7 +84,9 @@ def label_dial_ticks(draw, image, color, font, radius, number_ticks,
         x1 = int(120 + math.cos(angle_radians) * (radius - roffset))
         y1 = int(120 + math.sin(angle_radians) * (radius - roffset) + ascent/2.0)
         draw.text( x1, y1, label_string)
-
+        
+# now create the image and write it out
+#
 with Image(width=240, height=240, background=Color('#ffffff')) as img:
 
     with Drawing() as draw:
@@ -94,7 +96,8 @@ with Image(width=240, height=240, background=Color('#ffffff')) as img:
         draw_dial_ticks(draw, Color('#606060'), 1.5, 101, -150, 150, 97, 104) # minor
         draw_dial_ticks(draw, Color('#606060'), 1.5, 11, -150, 150, 89, 104)  # major
 
-        label_dial_ticks(draw, img, Color("#606060"), "Oswald-Light.ttf", 85, 11, -150,150, 0,100, "%0.0f")
+        label_dial_ticks(draw, img, Color("#606060"), "Oswald-Light.ttf",
+                         85, 11, -150,150, 0,100, "%0.0f")
 
         draw.draw(img)
     
