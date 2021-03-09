@@ -23,23 +23,40 @@ import todbot_gc9a01
 # Release any resources currently in use for the displays
 displayio.release_displays()
 
-# # one possible Raspberry Pi Pico pinout, at "southwest" of board
-# tft_clk = board.GP10 # must be a SPI CLK
-# tft_mosi= board.GP11 # must be a SPI TX
-# tft_rst = board.GP12
-# tft_dc  = board.GP13
-# tft_cs  = board.GP14
-# tft_bl  = board.GP15
-# spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+# attempt to auto-detect board type
+import os
+board_type = os.uname().machine
 
-# QT Py pinout
-tft_clk  = board.SCK
-tft_mosi = board.MOSI
-tft_cs   = board.A3
-tft_dc   = board.RX
-tft_rst  = board.TX
-tft_bl   = board.A2
-spi = board.SPI()  
+if 'QT Py M0' in board_type:
+    # QT Py pinout
+    tft_clk  = board.SCK
+    tft_mosi = board.MOSI
+    tft_rst  = board.TX
+    tft_dc   = board.RX
+    tft_cs   = board.A3
+    tft_bl   = board.A2
+    spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+    # spi.try_lock()
+    # spi.configure(baudrate=12_000_000)  # default spi is 0.25MHz on QT Py, try 12MHz
+    # spi.unlock()
+elif 'ItsyBitsy M4' in board_type:
+    # Itsy M4 pinout
+    tft_clk  = board.SCK
+    tft_mosi = board.MOSI
+    tft_rst  = board.MISO
+    tft_dc   = board.D2
+    tft_cs   = board.A5
+    tft_bl   = board.A3  # optional
+    spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+elif 'Pico' in board_type:
+    # Raspberry Pi Pico pinout, one possibility, at "southwest" of board
+    tft_clk = board.GP10 # must be a SPI CLK
+    tft_mosi= board.GP11 # must be a SPI TX
+    tft_rst = board.GP12
+    tft_dc  = board.GP13
+    tft_cs  = board.GP14
+    tft_bl  = board.GP15
+    spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 
 # Make the displayio SPI bus and the GC9A01 display
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
@@ -65,6 +82,6 @@ while True:
     text_group.x = 120 + int(r * math.sin(theta))
     text_group.y = 120 + int(r * math.cos(theta))
     theta -= 0.05
-    time.sleep(0.05)
+    time.sleep(0.01)
 
     
