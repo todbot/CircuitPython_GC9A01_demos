@@ -2,10 +2,8 @@
 
 Demos showing how to use CircuitPython displayio driver for GC9A01-based round LCDs
 
-<img width=400 src="./docs/gc9a01_demo1.jpg" />
-<img width=400 src="./docs/gc9a01_demo2.jpg" />
-
-
+<img width=325 src="./docs/gc9a01_demo1.jpg" />
+<img width=325 src="./docs/gc9a01_demo2.jpg" />
 
 ## Usage
 
@@ -32,6 +30,10 @@ display = gc9a01.GC9A01(display_bus, width=240, height=240, backlight_pin=tft_bl
 - 'gc9a01_helloworld' -- shows one way of doing polar coordinates
 - 'gc9a01_hellocircles' -- similar to above but with floating circles using `vectorio` 
 - 'gc9a01_gauge_knob' -- round dial gauge using gauge background & dial bitmaps, showing `bitmaptools.rotozoom`
+
+## Wiring
+
+
 
 ## Building your own dial gauges
 
