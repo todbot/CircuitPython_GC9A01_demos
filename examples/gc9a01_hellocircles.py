@@ -8,7 +8,7 @@
 #
 # You'll need to install 'adafruit_display_text' package.
 # Easiest way to do this is from Terminal:
-#  circup install adafruit_display_text  
+#  circup install gc9a01 adafruit_display_text  
 #
 
 import time
@@ -20,7 +20,8 @@ import terminalio
 import displayio
 from vectorio import Rectangle, Circle, Polygon, VectorShape
 from adafruit_display_text import label
-import todbot_gc9a01
+#import todbot_gc9a01
+import gc9a01
 
 # Release any resources currently in use for the displays
 displayio.release_displays()
@@ -29,8 +30,7 @@ displayio.release_displays()
 import os
 board_type = os.uname().machine
 
-if 'QT Py M0' in board_type:
-    # QT Py pinout
+if 'QT Py M0 Haxpress' in board_type:
     tft_clk  = board.SCK
     tft_mosi = board.MOSI
     tft_rst  = board.TX
@@ -39,7 +39,6 @@ if 'QT Py M0' in board_type:
     tft_bl   = board.A2
     spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 elif 'ItsyBitsy M4' in board_type:
-    # Itsy M4 pinout
     tft_clk  = board.SCK
     tft_mosi = board.MOSI
     tft_rst  = board.MISO
@@ -59,7 +58,7 @@ elif 'Pico' in board_type:
 
 # Make the displayio SPI bus and the GC9A01 display
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
-display = todbot_gc9a01.GC9A01(display_bus, width=240, height=240, backlight_pin=tft_bl)
+display = gc9a01.GC9A01(display_bus, width=240, height=240, backlight_pin=tft_bl)
 
 # Make the main display context
 main = displayio.Group(max_size=20)

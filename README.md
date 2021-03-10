@@ -29,3 +29,7 @@ display = todbot_gc9a01.GC9A01(display_bus, width=240, height=240, backlight_pin
 ```
 
 
+
+ideas:
+- bargraph display using vectorio
+- qtpy usb locket
