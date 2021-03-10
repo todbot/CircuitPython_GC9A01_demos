@@ -27,6 +27,9 @@ import gc9a01
 img_filenames = ( "/imgs/max1.bmp",
                   "/imgs/lars240.bmp" )
 
+# time in seconds between images
+img_time = 10
+
 # Release any resources currently in use for the displays
 displayio.release_displays()
 
@@ -76,7 +79,7 @@ while True:
     img_bitmap = displayio.OnDiskBitmap(open(img_filename, "rb"))
     img_tilegrid = displayio.TileGrid(img_bitmap, pixel_shader=displayio.ColorConverter())
     main.append(img_tilegrid)
-    time.sleep(10)
+    time.sleep(img_time)
     main.pop()  # remove image
     i = (i+1) % len(img_filenames)  # go to next file
     
