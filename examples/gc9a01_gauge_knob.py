@@ -22,23 +22,35 @@ legend_text = "PERCENT\nAWESOME"
 
 displayio.release_displays()
 
-# # one pinout, on "southeast" side of Pico board 
-# tft_clk = board.GP18
-# tft_mosi= board.GP19
-# tft_rst = board.GP20
-# tft_dc  = board.GP16
-# tft_cs  = board.GP17
-# tft_bl  = board.GP21
-# spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+import os
+board_type = os.uname().machine
 
-# another pinout, on "southwest" of Pico board
-tft_clk = board.GP10
-tft_mosi= board.GP11
-tft_rst = board.GP12
-tft_dc  = board.GP13
-tft_cs  = board.GP14
-tft_bl  = board.GP15
-spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+if 'ItsyBitsy M4' in board_type:
+    tft_clk  = board.SCK
+    tft_mosi = board.MOSI
+    tft_rst  = board.MISO
+    tft_dc   = board.D2
+    tft_cs   = board.A5
+    tft_bl   = board.A3  # optional
+    spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+elif 'Pico' in board_type:
+  # # one pinout, on "southeast" side of Pico board 
+  # tft_clk = board.GP18
+  # tft_mosi= board.GP19
+  # tft_rst = board.GP20
+  # tft_dc  = board.GP16
+  # tft_cs  = board.GP17
+  # tft_bl  = board.GP21
+  # spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+
+  # another pinout, on "southwest" of Pico board
+  tft_clk = board.GP10
+  tft_mosi= board.GP11
+  tft_rst = board.GP12
+  tft_dc  = board.GP13
+  tft_cs  = board.GP14
+  tft_bl  = board.GP15
+  spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 
 # Analog knob to control dial
 analog_in = AnalogIn(board.A2)
