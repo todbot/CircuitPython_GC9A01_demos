@@ -27,13 +27,22 @@ display = gc9a01.GC9A01(display_bus, width=240, height=240, backlight_pin=tft_bl
 
 ## Examples
 
+Check out the 'examples' directory for complete examples:
+
 - 'gc9a01_helloworld' -- shows one way of doing polar coordinates
 - 'gc9a01_hellocircles' -- similar to above but with floating circles using `vectorio`
-- 'gc9a01_picture_locket' -- display a series of pictures, makes a nice locket if used with a QT Py Haxspress
+- 'gc9a01_picture_locket' -- display a series of pictures, makes a nice locket if used with a QT Py Haxpress
 - 'gc9a01_gauge_knob' -- round dial gauge using gauge background & dial bitmaps, showing `bitmaptools.rotozoom`
+
+The examples attempt to auto-detect the board you're using. The currently detected boards:
+- QT Py M0 Haxpress
+- Raspberry Pi Pico
+- ItsyBitsy M4 Express
+
 
 ## Wiring
 
+[ more to come, but see the examples ]
 
 
 ## Building your own dial gauges
@@ -43,7 +52,6 @@ There is a partial Python port of [@bikerglen's gauge-generator](https://github.
 
 ## Future Project Ideas:
 - bargraph display using vectorio
-- qtpy usb locket
 
 
 
