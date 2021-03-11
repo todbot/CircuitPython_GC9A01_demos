@@ -35,9 +35,10 @@ Check out the 'examples' directory for complete examples:
 - 'gc9a01_gauge_knob' -- round dial gauge using gauge background & dial bitmaps, showing `bitmaptools.rotozoom`
 
 The examples attempt to auto-detect the board you're using. The currently detected boards:
-- QT Py M0 Haxpress
-- Raspberry Pi Pico
-- ItsyBitsy M4 Express
+
+- [QT Py M0 Haxpress](https://circuitpython.org/board/qtpy_m0_haxpress/)
+- [Raspberry Pi Pico](https://circuitpython.org/board/raspberry_pi_pico/)
+- [ItsyBitsy M4 Express](https://circuitpython.org/board/itsybitsy_m4_express/)
 
 
 ## Wiring
@@ -47,7 +48,7 @@ The examples attempt to auto-detect the board you're using. The currently detect
 
 ## Building your own dial gauges
 
-There is a partial Python port of [@bikerglen's gauge-generator](https://github.com/bikerglen/round-lcd-gauges/tree/main/gauge-generator) in `docs/gauge-generator`. These scripts use the wonderful [Wand](https://docs.wand-py.org/en/0.6.6/) Python wrapper for ImageMagick's C API.
+There is a partial Python port of [@bikerglen's gauge-generator](https://github.com/bikerglen/round-lcd-gauges/tree/main/gauge-generator) in [`docs/gauge-generator`](./docs/gauge-generator). These scripts use the wonderful [Wand](https://docs.wand-py.org/en/0.6.6/) Python wrapper for ImageMagick's C API.
 
 
 ## Future Project Ideas:
