@@ -1,6 +1,6 @@
 # CircuitPython GC9A01 demos
 
-Demos showing how to use CircuitPython displayio driver for GC9A01-based round LCDs
+Demos showing how to use [CircuitPython displayio driver](https://github.com/tylercrumpton/CircuitPython_GC9A01) for GC9A01-based round LCDs.  This driver is available in the [CircuitPython Community Bundle](https://github.com/adafruit/CircuitPython_Community_Bundle), or you can install it by hand by capying the `gc9a01.py` file to your `CIRCUITPY/lib` directory.
 
 <img width=325 src="./docs/gc9a01_demo1.jpg" />
 <img width=325 src="./docs/gc9a01_demo2.jpg" />
