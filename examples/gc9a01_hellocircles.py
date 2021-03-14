@@ -93,6 +93,6 @@ while True:
     text_group.y = 120 + int(r * math.cos(theta))
     display.refresh()
     theta -= 0.05
-    #time.sleep(0.01)
+    time.sleep(0.01)
 
     
