@@ -6,9 +6,15 @@
 # Tested on QTPy (SAMD21), ItsyBitsy M4, Raspberry Pi Pico (RP2040)
 # running CircuitPython 6.2 beta
 #
-# You'll need to install 'adafruit_display_text' package.
+# You'll need to install 'adafruit_display_text' library.
 # Easiest way to do this is from Terminal:
-#  circup install gc9a01 adafruit_display_text  
+#  circup install dafruit_display_text
+#
+# You'll need to install the 'gc9a01' library.
+# You can get that from the "Circuit_Python_Community" bundle:
+# https://github.com/adafruit/CircuitPython_Community_Bundle/releases
+# Unzip it and copy the "gc9a01.mpy" to the lib folder, like:
+# cp ~/Downloads/circuitpython-community-bundle-6.x-mpy-20210403/lib/gc9a01.mpy /Volumes/CIRCUITPY/lib
 #
 
 import time

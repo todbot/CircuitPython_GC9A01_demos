@@ -57,8 +57,8 @@ analog_in = AnalogIn(board.A2)
 
 # Create displayio bus and display
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
-display = todbot_gc9a01.GC9A01(display_bus, width=240, height=240,
-                               backlight_pin=tft_bl, auto_refresh=False)
+display = gc9a01.GC9A01(display_bus, width=240, height=240,
+                        backlight_pin=tft_bl, auto_refresh=False)
 
 # Create main display group and add it to the display
 main = displayio.Group()
