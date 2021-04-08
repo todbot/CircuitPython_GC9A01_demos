@@ -18,7 +18,7 @@ import busio
 import terminalio
 import displayio
 from adafruit_display_text import label
-import todbot_gc9a01
+import gc9a01
 
 # Release any resources currently in use for the displays
 displayio.release_displays()

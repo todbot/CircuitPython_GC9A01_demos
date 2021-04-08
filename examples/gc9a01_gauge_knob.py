@@ -13,7 +13,7 @@ import terminalio
 from analogio import AnalogIn
 import adafruit_imageload
 from adafruit_display_text import label
-import todbot_gc9a01
+import gc9a01
 
 # change these as you like, keep the pointer center at 15,105
 dial_background_filename = '/imgs/dial-background.bmp'
