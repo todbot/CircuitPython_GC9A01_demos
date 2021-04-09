@@ -65,7 +65,7 @@ The examples attempt to auto-detect the board you're using. The currently detect
 
 Wiring is dependent on board you're hooking it up to. The "SCL" and "SDA" lines need to be
 hooked up to SPI pins "SCK" and "MOSI/TX". The `gc9a01_helloworld.py` has example wirings for three
-different boards.  One example for the Pico is shown here:
+different boards.  Here is an example for the Pico:
 
 - VCC - Pico 3.3V(out)
 - Gnd - Pico Ground
@@ -77,6 +77,21 @@ different boards.  One example for the Pico is shown here:
 - BLK - Pico GP15 (can be omitted if you don't need backlight brightness control)
 
 <img width=500 src="./docs/gc9a01_pico_wiring1.jpg" />
+
+
+Here is an example for a QT Py Haxpress:
+
+- VCC - QT Py 3.3V
+- Gnd - QT Py Ground
+- SCL - QT Py SCK 
+- SDA - QT Py MO
+- RES - QT Py TX
+- DC  - QT Py A3
+- CS  - QT Py A2
+- BLK - unconnected
+
+<img width=500 src="./docs/gc9a01_qtpy_wiring1.jpg" />
+
 
 
 
