@@ -77,7 +77,9 @@ while True:
     print(time.monotonic(),"hello")
     img_filename = img_filenames[i]
     img_bitmap = displayio.OnDiskBitmap(open(img_filename, "rb"))
-    img_tilegrid = displayio.TileGrid(img_bitmap, pixel_shader=displayio.ColorConverter())
+    img_palette = displayio.ColorConverter()
+    #img_bitmap, img_palette = adafruit_imageload.load(img_filename)
+    img_tilegrid = displayio.TileGrid(img_bitmap, pixel_shader=img_palette)
     main.append(img_tilegrid)
     time.sleep(img_time)
     main.pop()  # remove image

@@ -1,6 +1,6 @@
 # CircuitPython GC9A01 demos
 
-Demos showing how to use [CircuitPython displayio driver](https://github.com/tylercrumpton/CircuitPython_GC9A01) for GC9A01-based round LCDs.  This driver is available in the [CircuitPython Community Bundle](https://github.com/adafruit/CircuitPython_Community_Bundle), or you can install it by hand by copying the `gc9a01.py` file to your `CIRCUITPY/lib` directory.
+Demos showing how to use [CircuitPython displayio driver](https://github.com/tylercrumpton/CircuitPython_GC9A01) for GC9A01-based round LCDs.  This driver is available in the [CircuitPython Community Bundle](https://github.com/adafruit/CircuitPython_Community_Bundle), or you can install it by hand by copying the `gc9a01.py` file to your `CIRCUITPY/lib` directory, or use `circup install gc9a01`.
 
 <img width=325 src="./docs/gc9a01_demo1.jpg" />
 <img width=325 src="./docs/gc9a01_demo2.jpg" />
@@ -32,16 +32,13 @@ Each of the .py files in "examples" is its own demo. Copy one of these to be you
 cp gc9a01_hellocircles.py /Volumes/CIRCUITPY/code.py
 ```
 
-You'll need to install 'adafruit_display_text' library. The easiest way to do this is from a terminal:
+You'll need to install various libraries.  Most notably the `gc9a01` library. You may also
+need the `adafruit_display_text` and `adafruit_imageload`, depending on the example.
+The easiest way to install these is from a terminal:
 ```
+circup install gc9a01
 circup install adafruit_display_text
-```
-
-You'll need to install the 'gc9a01' library. You can get that from the [Circuit_Python_Community bundle](https://github.com/adafruit/CircuitPython_Community_Bundle) at:
-  https://github.com/adafruit/CircuitPython_Community_Bundle/releases
-Unzip it and copy the `gc9a01.mpy` to the `CIRCUITPY/lib` folder, like:
-```
-cp ~/Downloads/circuitpython-community-bundle-6.x-mpy-20210403/lib/gc9a01.mpy /Volumes/CIRCUITPY/lib
+circup install adafruit_imageload
 ```
 
 
@@ -57,6 +54,7 @@ Check out the 'examples' directory for complete examples:
 The examples attempt to auto-detect the board you're using. The currently detected boards:
 
 - [QT Py M0 Haxpress](https://circuitpython.org/board/qtpy_m0_haxpress/)
+- [QT Py RP2040](https://circuitpython.org/board/adafruit_qtpy_rp2040/)
 - [Raspberry Pi Pico](https://circuitpython.org/board/raspberry_pi_pico/)
 - [ItsyBitsy M4 Express](https://circuitpython.org/board/itsybitsy_m4_express/)
 
@@ -91,7 +89,6 @@ Here is an example for a QT Py Haxpress:
 - BLK - unconnected
 
 <img width=500 src="./docs/gc9a01_qtpy_wiring1.jpg" />
-
 
 
 
