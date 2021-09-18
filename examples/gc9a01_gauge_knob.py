@@ -2,6 +2,14 @@
 #
 # 2021 - Tod Kurt - todbot.com
 #
+# Tested on QTPy RP2040, ItsyBitsy M4,
+# Raspberry Pi Pico (RP2040) running CircuitPython 7
+#
+# You'll need to install 'adafruit_display_text', 'adafruit_imageload'
+# and 'gc9a01' library.
+# Easiest way to do this is from Terminal:
+#  circup install adafruit_display_text adafruit_imageload gc9a01
+#
 
 import time
 import math
@@ -25,7 +33,16 @@ displayio.release_displays()
 import os
 board_type = os.uname().machine
 
-if 'ItsyBitsy M4' in board_type:
+if 'QT Py M0' in board_type or 'QT Py RP2040' in board_type: 
+    # QT Py pinout
+    tft_clk  = board.SCK
+    tft_mosi = board.MOSI
+    tft_rst  = board.TX
+    tft_dc   = board.RX
+    tft_cs   = board.A3
+    tft_bl   = board.A2 # optional
+    spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+elif 'ItsyBitsay M4' in board_type:
     tft_clk  = board.SCK
     tft_mosi = board.MOSI
     tft_rst  = board.MISO
@@ -53,7 +70,7 @@ elif 'Pico' in board_type:
   spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 
 # Analog knob to control dial
-analog_in = AnalogIn(board.A2)
+analog_in = AnalogIn(board.A1)
 
 # Create displayio bus and display
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
@@ -65,8 +82,8 @@ main = displayio.Group()
 display.show(main)
 
 # 240x240 dial background
-bg_bitmap = displayio.OnDiskBitmap(open(dial_background_filename, "rb"))
-bg_tile_grid = displayio.TileGrid(bg_bitmap, pixel_shader=displayio.ColorConverter())
+bg_bitmap,bg_pal = adafruit_imageload.load(dial_background_filename)
+bg_tile_grid = displayio.TileGrid(bg_bitmap, pixel_shader=bg_pal)
 main.append(bg_tile_grid)
 
 # Text legend

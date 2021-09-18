@@ -3,12 +3,12 @@
 #
 # 2021 - Tod Kurt - todbot.com
 #
-# Tested on QTPy (SAMD21) and Raspberry Pi Pico (RP2040)
-# running CircuitPython 6.2 beta
+# Tested on QTPy (SAMD21), QTPy RP2040, and Raspberry Pi Pico (RP2040)
+# running CircuitPython 7.
 #
-# You'll need to install 'adafruit_display_text' package.
+# You'll need to install 'gc9a01' package.
 # Easiest way to do this is from Terminal:
-#  circup install gc9a01 adafruit_imageload
+#  circup install gc9a01
 #
 
 import time
@@ -23,7 +23,7 @@ import gc9a01
 # A list of all the BMP images you want displayed, in order
 #
 # prepare image with ImageMagick like:
-# convert input.jpg -resize 240x240 BMP:output.bmp
+# convert input.jpg -resize 240x240 -type palette BMP3:output.bmp
 img_filenames = ( "/imgs/max1.bmp",
                   "/imgs/lars240.bmp" )
 
@@ -36,7 +36,7 @@ displayio.release_displays()
 # attempt to auto-detect board type
 import os
 board_type = os.uname().machine
-if 'QT Py M0 Haxpress' in board_type:
+if 'QT Py M0 Haxpress' in board_type or 'QT Py RP2040' in board_type: 
     tft_clk  = board.SCK
     tft_mosi = board.MOSI
     tft_rst  = board.TX
@@ -69,7 +69,7 @@ display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=
 display = gc9a01.GC9A01(display_bus, width=240, height=240, backlight_pin=tft_bl)
 
 # Make the main display context
-main = displayio.Group(max_size=2)
+main = displayio.Group()
 display.show(main)
 
 i=0

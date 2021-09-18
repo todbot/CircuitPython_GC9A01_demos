@@ -3,21 +3,12 @@
 #
 # 2021 - Tod Kurt - todbot.com
 #
-# Tested on QTPy (SAMD21), ItsyBitsy M4, Raspberry Pi Pico (RP2040)
-# running CircuitPython 6.2 beta
+# Tested on QTPy M0 (SAMD21), QTPy RP2040, ItsyBitsy M4,
+# Raspberry Pi Pico (RP2040) running CircuitPython 7
 #
-# Copy this file to be your CIRCUITPY's "code.py", like:
-#  cp gc9a01_helloworld.py /Volumes/CIRCUITPY/code.py
-#
-# You'll need to install 'adafruit_display_text' library.
+# You'll need to install 'adafruit_display_text' and 'gc9a01' library.
 # Easiest way to do this is from Terminal:
-#  circup install adafruit_display_text
-#
-# You'll need to install the 'gc9a01' library.
-# You can get that from the "Circuit_Python_Community" bundle:
-#  https://github.com/adafruit/CircuitPython_Community_Bundle/releases
-# Unzip it and copy the "gc9a01.mpy" to the lib folder, like:
-#  cp ~/Downloads/circuitpython-community-bundle-6.x-mpy-20210403/lib/gc9a01.mpy /Volumes/CIRCUITPY/lib
+#  circup install adafruit_display_text gc9a01
 #
 
 import time
@@ -36,7 +27,7 @@ displayio.release_displays()
 import os
 board_type = os.uname().machine
 
-if 'QT Py M0' in board_type:
+if 'QT Py M0' in board_type or 'QT Py RP2040' in board_type: 
     # QT Py pinout
     tft_clk  = board.SCK
     tft_mosi = board.MOSI
@@ -72,14 +63,14 @@ display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=
 display = gc9a01.GC9A01(display_bus, width=240, height=240, backlight_pin=tft_bl)
 
 # Make the main display context
-main = displayio.Group(max_size=10)
+main = displayio.Group()
 display.show(main)
 
 # Draw a text label
 text = "Hello\nWorld!"
 text_area = label.Label(terminalio.FONT, text=text, color=0xFFFF00,
                         anchor_point=(0.5,0.5), anchored_position=(0,0))
-text_group = displayio.Group(max_size=5, scale=2)
+text_group = displayio.Group(scale=2)
 text_group.append(text_area) 
 main.append(text_group)
 
@@ -92,5 +83,3 @@ while True:
     text_group.y = 120 + int(r * math.cos(theta))
     theta -= 0.05
     time.sleep(0.01)
-
-    
