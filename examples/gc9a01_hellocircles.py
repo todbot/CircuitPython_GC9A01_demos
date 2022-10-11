@@ -37,6 +37,14 @@ if 'QT Py M0 Haxpress' in board_type or 'QT Py RP2040' in board_type:
     tft_cs   = board.A3
     tft_bl   = board.A2
     spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+elif 'Adafruit Feather M4 Express with samd51j19' in board_type:
+    tft_clk  = board.SCL
+    tft_mosi = board.SDA
+    tft_rst  = board.D9
+    tft_dc   = board.D6
+    tft_cs   = board.D5
+    tft_bl   = board.A3  # optional
+    spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 elif 'ItsyBitsy M4' in board_type:
     tft_clk  = board.SCK
     tft_mosi = board.MOSI
@@ -91,5 +99,3 @@ while True:
     display.refresh()
     theta -= 0.05
     time.sleep(0.01)
-
-    
