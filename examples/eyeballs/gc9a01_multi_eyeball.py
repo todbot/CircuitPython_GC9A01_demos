@@ -1,8 +1,8 @@
 # gc9a01_multi_eyeball_code.py --
 # 14 Oct 2022 - @todbot / Tod Kurt
-# Part of circuitpython-tricks/larger-tricks
+# Part of https://github.com/todbot/CircuitPython_GC9A01_demos
 # Requires rebuilt CircuitPython with CIRCUITPY_DISPLAY_LIMIT set to 3
-# see: https://todbot.com/blog/2022/05/19/multiple-displays-in-circuitpython-compiling-custom-circuitpython/
+# also see: https://todbot.com/blog/2022/05/19/multiple-displays-in-circuitpython-compiling-custom-circuitpython/
 
 import time, math, random
 import board, busio
