@@ -58,6 +58,15 @@ The examples attempt to auto-detect the board you're using. The currently detect
 - [Raspberry Pi Pico](https://circuitpython.org/board/raspberry_pi_pico/)
 - [ItsyBitsy M4 Express](https://circuitpython.org/board/itsybitsy_m4_express/)
 
+### Eyeballs demos
+
+Additionally, there are several demos in the "examples/eyeballs" directory that use these round displays to make moving eyes.
+
+- 'eyeballs/qteye.py' -- single eyeball (or two eyeballs wired in parallel) on a QT PY RP2040 or similar
+- 'eyeballs/qtpy_person_sensor.py' -- single eyeball that tracks your face, thanks to a Person Sensor module
+- 'eyeballs/gc9a01_lizard_eye.py' -- similar to "qteye" but uses a cool lizard eye (thx @DJDevon3!)
+- 'eyeballs/gc9a01_multi_eyeball.py' -- independent multiple eyes usigng a [recompiled CircuitPython](https://todbot.com/blog/2022/05/19/multiple-displays-in-circuitpython-compiling-custom-circuitpython/)
+
 
 ## Wiring
 
@@ -81,7 +90,7 @@ Here is an example for a QT Py Haxpress:
 
 - VCC - QT Py 3.3V
 - Gnd - QT Py Ground
-- SCL - QT Py SCK 
+- SCL - QT Py SCK
 - SDA - QT Py MO
 - RES - QT Py TX
 - DC  - QT Py A3
