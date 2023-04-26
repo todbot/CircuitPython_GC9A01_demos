@@ -51,23 +51,31 @@ elif 'ItsyBitsay M4' in board_type:
     tft_bl   = board.A3  # optional
     spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 elif 'Pico' in board_type:
-  # # one pinout, on "southeast" side of Pico board 
-  # tft_clk = board.GP18
-  # tft_mosi= board.GP19
-  # tft_rst = board.GP20
-  # tft_dc  = board.GP16
-  # tft_cs  = board.GP17
-  # tft_bl  = board.GP21
-  # spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+    # # one pinout, on "southeast" side of Pico board 
+    # tft_clk = board.GP18
+    # tft_mosi= board.GP19
+    # tft_rst = board.GP20
+    # tft_dc  = board.GP16
+    # tft_cs  = board.GP17
+    # tft_bl  = board.GP21
+    # spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 
-  # another pinout, on "southwest" of Pico board
-  tft_clk = board.GP10
-  tft_mosi= board.GP11
-  tft_rst = board.GP12
-  tft_dc  = board.GP13
-  tft_cs  = board.GP14
-  tft_bl  = board.GP15
-  spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+    # another pinout, on "southwest" of Pico board
+    tft_clk = board.GP10
+    tft_mosi= board.GP11
+    tft_rst = board.GP12
+    tft_dc  = board.GP13
+    tft_cs  = board.GP14
+    tft_bl  = board.GP15
+    spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+elif 'Waveshare RP2040-LCD-1.28 with rp2040' in board_type:
+    tft_clk = board.LCD_CLK
+    tft_mosi = board.LCD_DIN
+    tft_rst = board.LCD_RST
+    tft_dc = board.LCD_DC
+    tft_cs = board.LCD_CS
+    tft_bl = board.LCD_BL
+    spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 
 # Analog knob to control dial
 analog_in = AnalogIn(board.A1)
