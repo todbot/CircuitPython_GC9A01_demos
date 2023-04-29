@@ -57,6 +57,16 @@ elif 'Pico' in board_type:
     tft_cs  = board.GP14
     tft_bl  = board.GP15
     spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+elif 'Waveshare RP2040-LCD-1.28 with rp2040' in board_type:
+    tft_clk = board.LCD_CLK
+    tft_mosi = board.LCD_DIN
+    tft_rst = board.LCD_RST
+    tft_dc = board.LCD_DC
+    tft_cs = board.LCD_CS
+    tft_bl = board.LCD_BL
+    spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+else:
+    print("ERROR: Unknown board!")
 
 # Make the displayio SPI bus and the GC9A01 display
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
