@@ -19,7 +19,7 @@ spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
 display = gc9a01.GC9A01(display_bus, width=dw, height=dh, rotation=270)
 maingroup = displayio.Group()  # a main group that holds everything
-display.show(maingroup) # put it on the display
+display.root_group = maingroup # put it on the display
 
 # draw cirlces
 for i in range(15):

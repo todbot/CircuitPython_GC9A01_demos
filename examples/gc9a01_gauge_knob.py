@@ -87,7 +87,7 @@ display = gc9a01.GC9A01(display_bus, width=240, height=240,
 
 # Create main display group and add it to the display
 main = displayio.Group()
-display.show(main)
+display.root_group = main
 
 # 240x240 dial background
 bg_bitmap,bg_pal = adafruit_imageload.load(dial_background_filename)

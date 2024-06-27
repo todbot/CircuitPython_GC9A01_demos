@@ -78,7 +78,7 @@ display = gc9a01.GC9A01(display_bus, width=240, height=240, backlight_pin=tft_bl
 
 # Make the main display context
 main = displayio.Group()
-display.show(main)
+display.root_group = main
 
 i=0
 while True:
