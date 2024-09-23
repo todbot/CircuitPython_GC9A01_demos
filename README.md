@@ -9,17 +9,20 @@ Demos showing how to use [CircuitPython displayio driver](https://github.com/tyl
 
 ```py
 import board
+import busio
+import fourwire
 import displayio
 import gc9a01
+displayio.release_displays()
 # Raspberry Pi Pico pinout, one possibility, at "southwest" of board
 tft_clk = board.GP10 # must be a SPI CLK
 tft_mosi= board.GP11 # must be a SPI TX
 tft_rst = board.GP12
 tft_dc  = board.GP13
-tft_cs  = board.GP14
-tft_bl  = board.GP15
+tft_cs  = board.GP14  # optional, can be "None"
+tft_bl  = board.GP15  # optional, can be "None"
 spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
-display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
+display_bus = fourwire.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
 display = gc9a01.GC9A01(display_bus, width=240, height=240, backlight_pin=tft_bl)
 
 # ... normal circuitpython displayio stuff
